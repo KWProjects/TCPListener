@@ -138,20 +138,13 @@ namespace LingoServer
                 {
                     byte[] messageReceived = new byte[1024];
                     int data = client.Socket.Receive(messageReceived);
-                    //if (data != 0)
-                    //{
-                        MessageReceivedEventArgs args = new MessageReceivedEventArgs();
+                    MessageReceivedEventArgs args = new MessageReceivedEventArgs();
                     //args.Message = Encoding.ASCII.GetString(messageReceived, 0, data);
                     args.Message = messageReceived;
                     args.ClientId = client.Id;
                     OnMessageReceived(args);
                     total++;
                     Thread.Sleep(100);
-                    //}
-                    //else
-                    //{
-                        //Disconnect(client.Id);
-                    //}
                 }
             }
             catch (SocketException e)
